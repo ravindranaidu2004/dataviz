@@ -1,0 +1,92 @@
+# Environment files (use docker-compose env instead)
+.env
+.env.local
+.env.*.local
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Testing & coverage
+.pytest_cache/
+.coverage
+.tox/
+htmlcov/
+
+# IDEs & editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation (can include in image if desired)
+MIGRATION_GUIDE.md
+CLEANUP.md
+RUN_INSTRUCTIONS.md
+SETUP_COMPLETE.md
+
+# Temporary & cache files
+*.tmp
+*.temp
+*.bak
+*.backup
+.cache/
+*.log
+logs/
+
+# Data directories (optional - can exclude or include)
+# data/
+# outputs/
+# results/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Docker files (don't include in build context)
+.dockerignore
+docker-compose.yml
+docker-compose.*.yml
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# Development
+*.ipynb
+.ipynb_checkpoints/
+Makefile

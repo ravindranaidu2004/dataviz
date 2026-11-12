@@ -1,0 +1,30 @@
+# Core data analysis & visualization
+pandas
+numpy
+matplotlib
+seaborn
+networkx
+scikit-learn
+
+# Web scraping & data loading
+requests
+beautifulsoup4
+lxml
+html5lib
+openpyxl
+pyarrow
+duckdb
+
+# LLM & AI
+langchain
+langchain-core
+langchain-google-genai
+google-generativeai
+
+# UI & utilities
+streamlit
+python-dotenv
+pillow
+tabulate
+psutil
+httpx

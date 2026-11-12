@@ -1,0 +1,58 @@
+# ============================================================
+# Docker Compose Configuration
+# ============================================================
+# Usage:
+#   docker-compose up          # Start the app
+#   docker-compose down        # Stop the app
+#   docker-compose logs -f     # View logs
+# ============================================================
+
+version: '3.8'
+
+services:
+  data-analyst-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: data-analyst-agent
+    ports:
+      - "8501:8501"
+    environment:
+      # Add your API keys here
+      - gemini_api_1=${GEMINI_API_1}
+      - gemini_api_2=${GEMINI_API_2:-}
+      - gemini_api_3=${GEMINI_API_3:-}
+      # LLM Configuration
+      - GOOGLE_MODEL=gemini-2.5-pro
+      - LLM_TEMPERATURE=0
+      - LLM_TIMEOUT_SECONDS=240
+      # Code Execution
+      - CODE_EXECUTION_TIMEOUT=60
+      - MAX_IMAGE_SIZE_BYTES=100000
+      # Logging
+      - LOG_LEVEL=INFO
+      - DEBUG_MODE=false
+    volumes:
+      # Mount data directory for persistent storage
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+    networks:
+      - analyst-network
+
+networks:
+  analyst-network:
+    driver: bridge
+
+# Volume configuration
+volumes:
+  data:
+    driver: local
+  outputs:
+    driver: local
